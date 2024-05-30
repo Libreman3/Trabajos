@@ -3,7 +3,8 @@ using namespace std;
 
 int main(){
 
-  int NA, D, CV, PC, PV, NAACT, GananciaMax = 0, BanMax = 0, ArticuloMax = 0, ArtVendidosQ1 = 0, ArtVendidosQ2 = 0, CantTotalVentas = 0, CantVentasSem1 = 0, VA5Dia16 = 0, Ganancia, PorcentajeSem1;
+  int NA, D, CV, PC, PV, NAACT, GananciaMax = 0, BanMax = 0, ArticuloMax = 0, ArtVendidosQ1 = 0, ArtVendidosQ2 = 0, VA5Dia16 = 0, Ganancia;
+  float CantTotalVentas = 0, CantVentasSem1 = 0, PorcentajeSem1;
 
   cout << "Ingrese el numero de articulo.. ";
   cin >> NA;
