@@ -1,0 +1,91 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+
+  int NA, D, CV, PC, PV, NAACT, GananciaMax = 0, BanMax = 0, ArticuloMax = 0, ArtVendidosQ1 = 0, ArtVendidosQ2 = 0, CantTotalVentas = 0, CantVentasSem1 = 0, VA5Dia16 = 0, Ganancia, PorcentajeSem1;
+
+  cout << "Ingrese el numero de articulo.. ";
+  cin >> NA;
+
+  cout << "Ingrese el dia de la venta.. ";
+  cin >> D;
+
+  cout << "Ingrese la cantidad vendida.. ";
+  cin >> CV;
+
+  cout << "Ingrese el precio de costo.. ";
+  cin >> PC;
+
+  cout << "Ingrese el precio de venta.. ";
+  cin >> PV;
+
+  while(NA != 0){
+    Ganancia = 0;
+    NAACT = NA;
+
+    while(NA == NAACT){
+      // Punto A
+      Ganancia += CV * (PV - PC);
+      if(BanMax == 0){
+        GananciaMax = Ganancia;
+        ArticuloMax = NA;
+        BanMax = 1;
+      }else if(Ganancia > GananciaMax){
+        ArticuloMax = NA;
+        GananciaMax = Ganancia;
+      }
+      // Punto B
+      if (CV > 0){
+        if(D > 0 && D <= 15){
+          ArtVendidosQ1 += CV;
+        }else if(D <= 31){
+          ArtVendidosQ2 += CV;
+        } else{
+          cout << "El numero de Dias ingresado es incorrecto" << endl;
+        }
+      }else{
+        cout << "El numero de Cantidad de Ventas ingresado es incorrecto" << endl;
+      }
+      // Punto C
+      if(D > 0 && D <= 15){
+        CantVentasSem1++;
+      }
+      CantTotalVentas++;
+      // Punto D
+      if(NA == 5 && D == 16){
+        VA5Dia16++;
+      }
+
+      cout << "Ingrese el numero de articulo.. ";
+      cin >> NA;
+
+      cout << "Ingrese el dia de la venta.. ";
+      cin >> D;
+
+      cout << "Ingrese la cantidad vendida.. ";
+      cin >> CV;
+
+      cout << "Ingrese el precio de costo.. ";
+      cin >> PC;
+
+      cout << "Ingrese el precio de venta.. ";
+      cin >> PV;
+    }
+  }
+  //Continuacion Punto C
+  PorcentajeSem1 = (CantVentasSem1 * 100) / CantTotalVentas;
+  //Continuacion Punto D
+  if(VA5Dia16 > 0){
+    cout << "La cantidad de ventas del articulo 5 en el dia 16 es de " << VA5Dia16 << " unidades." << endl;
+  }else{
+    cout<< "No se realizaron ventas del articulo 5 el dia 16." << endl;
+  }
+
+  cout << "El articulo que mas ganacia recaudo es el numero " << ArticuloMax << endl;
+  cout << "Articulos vendidos en la primera quincena: " << ArtVendidosQ1 << endl;
+  cout << "Articulos vendidos en la segunda quincena: " << ArtVendidosQ2 << endl;
+  cout << "El porcentaje de ventas de la semana 1, en base al total del mes, fue de: " << PorcentajeSem1 << "%" << endl;
+
+  return 0;
+}
